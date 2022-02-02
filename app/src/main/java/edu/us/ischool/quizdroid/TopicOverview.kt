@@ -13,14 +13,14 @@ class TopicOverview : AppCompatActivity() {
         setContentView(R.layout.activity_topic_overview)
 
         // Get the Intent that started this activity and extract the string
-        val message = intent.getStringExtra(EXTRA_TEXT)
+        val topic = intent.getStringExtra(EXTRA_TEXT)
 
         // Capture the layout's TextView and set the string as its text
         val quizTopicTV = findViewById<TextView>(R.id.tvTopic).apply {
-            text = message
+            text = topic
         }
 
-        // get begin button reference
+        // get reference to begin button
         val btnBegin = findViewById<Button>(R.id.btnBeginQuiz)
         // start quiz question activity on click
         btnBegin.setOnClickListener{
