@@ -17,6 +17,7 @@ class QuizQuestion : AppCompatActivity() {
         // ----- populate activity w/ intent -----
         // Get the Intent that started this activity and extract the question number
         val questionNum = intent.getIntExtra("QUESTION_NUM", 1)
+        val numCorrect = intent.getIntExtra("NUM_CORRECT", 0)
 
         // Capture the layout's TextView and set the string as its text
         val tvQuestionTracker = findViewById<TextView>(R.id.tvQuestionTracker).apply {
@@ -41,8 +42,9 @@ class QuizQuestion : AppCompatActivity() {
             val selectedRB = radioGroupAnswers.checkedRadioButtonId
             val answer = findViewById<RadioButton>(selectedRB).text.toString()
             val intent = Intent(this, QuestionAnswer::class.java).apply {
-                putExtra(EXTRA_TEXT, answer)
+                putExtra("USER_ANSWER", answer)
                 putExtra("QUESTION_NUM", questionNum)
+                putExtra("NUM_CORRECT", numCorrect)
             }
             startActivity(intent)
         }

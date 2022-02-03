@@ -14,22 +14,38 @@ class QuestionAnswer : AppCompatActivity() {
 
         // ----- populate activity w/ intent -----
         // Get the Intent that started this activity and extract data
-        val userAnswer = intent.getStringExtra(Intent.EXTRA_TEXT)
+        val userAnswer = intent.getStringExtra("USER_ANSWER")
         val questionNum = intent.getIntExtra("QUESTION_NUM", 1)
+        var numCorrect = intent.getIntExtra("NUM_CORRECT", 1)
+
         // TODO get next vs. finished status
-        // testing
-        //val quizStatus = "Finish"
-        val quizStatus = "Next"
+        val quizStatus: String
+        // HARDCODED: assumes all quizzes are 9 questions long
+        if (questionNum < 9) {
+            quizStatus = "Next"
+        } else quizStatus = "Finish"
 
         // get reference to user answer textView and set its text
         val tvUserAnswer = findViewById<TextView>(R.id.tvUserAnswer).apply {
             text = userAnswer
         }
 
-        // TODO get reference to next/finish button and set its text
-        // testing
+        // get reference to next/finish button and set its text
         val btnNextFinish = findViewById<Button>(R.id.btnNextFinish).apply {
             text = quizStatus
+        }
+
+        // ----- this activity -----
+        // compare user answer to correct answer
+        if (userAnswer.equals("Answer 1")) {
+            // HARDCODED: assumes all correct answers are "Answer 1"
+            numCorrect++
+        }
+
+        // get reference to score TextView and set its text
+        val quizScoreTV = findViewById<TextView>(R.id.tvQuizScore).apply {
+            // HARDCODED: assumes all quizzes are 9 questions long
+            text = "You have $numCorrect out of 9 correct."
         }
 
         // ----- next activity -----
@@ -43,6 +59,7 @@ class QuestionAnswer : AppCompatActivity() {
                 // else (next), return to quiz question activity with next question
                 val intent = Intent(this, QuizQuestion::class.java).apply {
                     putExtra("QUESTION_NUM", questionNum + 1)
+                    putExtra("NUM_CORRECT", numCorrect)
                 }
                 startActivity(intent)
             }
