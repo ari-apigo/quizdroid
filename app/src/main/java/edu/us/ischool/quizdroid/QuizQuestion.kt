@@ -2,6 +2,7 @@ package edu.us.ischool.quizdroid
 
 import android.content.Intent
 import android.content.Intent.EXTRA_TEXT
+import android.content.Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button

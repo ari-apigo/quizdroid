@@ -31,6 +31,7 @@ class TopicOverview : AppCompatActivity() {
                 putExtra("QUESTION_NUM", 1)
             }
             startActivity(intent)
+            finish()
         }
     }
 }

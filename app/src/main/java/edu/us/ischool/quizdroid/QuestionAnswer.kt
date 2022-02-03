@@ -62,6 +62,7 @@ class QuestionAnswer : AppCompatActivity() {
                     putExtra("NUM_CORRECT", numCorrect)
                 }
                 startActivity(intent)
+                finish()
             }
         }
     }
