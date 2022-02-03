@@ -12,8 +12,10 @@ class QuestionAnswer : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question_answer)
 
+        // ----- populate activity w/ intent -----
         // Get the Intent that started this activity and extract data
         val userAnswer = intent.getStringExtra(Intent.EXTRA_TEXT)
+        val questionNum = intent.getIntExtra("QUESTION_NUM", 1)
         // TODO get next vs. finished status
         // testing
         //val quizStatus = "Finish"
@@ -30,6 +32,7 @@ class QuestionAnswer : AppCompatActivity() {
             text = quizStatus
         }
 
+        // ----- next activity -----
         // open next activity based on quiz status
         btnNextFinish.setOnClickListener{
             if (quizStatus.equals("Finish")) {
@@ -38,7 +41,9 @@ class QuestionAnswer : AppCompatActivity() {
                 startActivity(intent)
             } else {
                 // else (next), return to quiz question activity with next question
-                val intent = Intent(this, QuizQuestion::class.java)
+                val intent = Intent(this, QuizQuestion::class.java).apply {
+                    putExtra("QUESTION_NUM", questionNum + 1)
+                }
                 startActivity(intent)
             }
         }
