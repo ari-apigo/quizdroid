@@ -12,13 +12,25 @@ class TopicOverview : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_topic_overview)
 
+        val app = this.application as QuizApp
+        val topicRepo = app.getTopicRepo().quizTopics
+
         // ----- populate activity w/ intent -----
         // Get the Intent that started this activity and extract the string
         val topic = intent.getStringExtra(EXTRA_TEXT)
 
+        // get topic data
+        val topicData = topicRepo.get(intent.getIntExtra("TOPIC_ID", 1))
+
         // Capture the layout's TextView and set the string as its text
         val quizTopicTV = findViewById<TextView>(R.id.tvTopic).apply {
             text = topic
+        }
+        val quizLDescTV = findViewById<TextView>(R.id.tvLongDesc).apply {
+            text = topicData.topicLDesc
+        }
+        val quizQCountTV = findViewById<TextView>(R.id.tvQuestionCount).apply {
+            text = "${topicData.topicQuestions.size} Questions"
         }
 
         // ----- next activity -----

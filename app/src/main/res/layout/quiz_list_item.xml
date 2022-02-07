@@ -7,17 +7,28 @@
     android:layout_height="wrap_content">
 
     <TextView
+        android:id="@+id/quizTopicID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/quizTopic"
+        android:text="TopicID"
+        android:textSize="20sp" />
+
+    <TextView
         android:id="@+id/quizTopic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="TextView" />
+        app:layout_constraintStart_toEndOf="@id/quizTopicID"
+        android:text="Topic Name"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/quizDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/quizTopic"
-        android:text="TextView" />
+        app:layout_constraintStart_toEndOf="@id/quizTopicID"
+        android:text="Topic Description" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

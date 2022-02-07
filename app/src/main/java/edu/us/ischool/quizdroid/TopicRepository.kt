@@ -9,7 +9,7 @@ open class TopicRepository {
         Quiz("Question 2", "Answer 1", "Answer 2", "Answer 3", "Answer 4", 1),
         Quiz("Question 3", "Answer 1", "Answer 2", "Answer 3", "Answer 4", 1))
 
-    val quizTopics = arrayListOf<Topic>(Topic("New Math", "This is a math quiz.", "This is a longer description.", questions),
+    val quizTopics = arrayListOf<Topic>(Topic("New Math", "This is a math quiz.", "This is a longer description about new math.", questions),
         Topic("Physics", "This is a physics quiz.", "This is a longer description.", questions),
         Topic("Marvel Super Heroes", "This is a Marvel Super Heroes quiz.", "This is a longer description.", questions),
         Topic("Pokemon Types", "This is a Pokemon Types quiz.", "This is a longer description.", questions),

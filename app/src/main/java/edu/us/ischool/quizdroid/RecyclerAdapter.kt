@@ -18,6 +18,7 @@ class RecyclerAdapter(private val quizzes: ArrayList<Topic>) :
     class ViewHolder(v: View) : RecyclerView.ViewHolder(v), View.OnClickListener {
         val quizTopicTV: TextView = v.findViewById(R.id.quizTopic)
         val quizDescTV: TextView = v.findViewById(R.id.quizDescription)
+        val quizTopicID: TextView = v.findViewById(R.id.quizTopicID)
 
         // initialize View.OnClickListener
         init {
@@ -26,8 +27,10 @@ class RecyclerAdapter(private val quizzes: ArrayList<Topic>) :
 
         override fun onClick(p0: View) {
             val quizTopic = quizTopicTV.text.toString()
+            val quizTopicNum = quizTopicID.text.toString()
             val intent = Intent(p0.context, TopicOverview::class.java).apply {
                 putExtra(EXTRA_TEXT, quizTopic)
+                putExtra("TOPIC_ID", quizTopicNum.toInt() - 1)
             }
             p0.context.startActivity(intent)
         }
@@ -48,5 +51,6 @@ class RecyclerAdapter(private val quizzes: ArrayList<Topic>) :
         //      and replace view contents with that element's data
         holder.quizTopicTV.text = quizzes[position].topicTitle
         holder.quizDescTV.text = quizzes[position].topicSDesc
+        holder.quizTopicID.text = (position + 1).toString()
     }
 }
