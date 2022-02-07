@@ -10,15 +10,18 @@
         android:id="@+id/quizTopicID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/quizTopic"
+        android:layout_marginStart="10sp"
         android:text="TopicID"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="@id/quizTopic"
+        app:layout_constraintEnd_toStartOf="@id/quizTopic"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/quizTopic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20sp"
         app:layout_constraintStart_toEndOf="@id/quizTopicID"
         android:text="Topic Name"
         android:textSize="20sp" />
@@ -27,6 +30,7 @@
         android:id="@+id/quizDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20sp"
         app:layout_constraintTop_toBottomOf="@id/quizTopic"
         app:layout_constraintStart_toEndOf="@id/quizTopicID"
         android:text="Topic Description" />
