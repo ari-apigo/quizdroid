@@ -6,7 +6,7 @@ import android.widget.Adapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class Quiz(topic: String) {
+class QuizTest(topic: String) {
     val topic = topic
     val desc = "This is a description of the quiz topic."
     val totalQuestions = 9
@@ -26,8 +26,14 @@ class MainActivity : AppCompatActivity() {
 
         linearLayoutManager = LinearLayoutManager(this)
 
-        val quizTopics = arrayListOf<Quiz>(Quiz("Math"), Quiz("Physics"), Quiz("Marvel Super Heroes"),
-            Quiz("Pokemon Types"), Quiz("Pokemon Names"))
+        val app = this.application as QuizApp
+
+        val topicRepo = app.getTopicRepo()
+
+        val quizTopics = topicRepo.quizTopics
+
+//        val quizTopics = arrayListOf<QuizTest>(QuizTest("Math"), QuizTest("Physics"), QuizTest("Marvel Super Heroes"),
+//            QuizTest("Pokemon Types"), QuizTest("Pokemon Names"))
 
         // access recyclerView from XML file
         var rv = findViewById<RecyclerView>(R.id.listQuiz)

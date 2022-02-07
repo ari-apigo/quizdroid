@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 // consulted https://www.raywenderlich.com/1560485-android-recyclerview-tutorial-with-kotlin#toc-anchor-009
 
-class RecyclerAdapter(private val quizzes: ArrayList<Quiz>) :
+class RecyclerAdapter(private val quizzes: ArrayList<Topic>) :
     RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     class ViewHolder(v: View) : RecyclerView.ViewHolder(v), View.OnClickListener {
@@ -46,8 +46,7 @@ class RecyclerAdapter(private val quizzes: ArrayList<Quiz>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         // get element from dataset at this position
         //      and replace view contents with that element's data
-        holder.quizTopicTV.text = quizzes[position].topic
-        holder.quizDescTV.text = quizzes[position].desc
+        holder.quizTopicTV.text = quizzes[position].topicTitle
+        holder.quizDescTV.text = quizzes[position].topicSDesc
     }
-
 }
