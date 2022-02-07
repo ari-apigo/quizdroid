@@ -13,8 +13,8 @@
         android:layout_marginStart="10sp"
         android:text="TopicID"
         android:textSize="20sp"
-        app:layout_constraintTop_toTopOf="@id/quizTopic"
-        app:layout_constraintEnd_toStartOf="@id/quizTopic"
+        app:layout_constraintTop_toTopOf="@id/imageView"
+        app:layout_constraintEnd_toStartOf="@id/imageView"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20sp"
-        app:layout_constraintStart_toEndOf="@id/quizTopicID"
+        app:layout_constraintStart_toEndOf="@id/imageView"
         android:text="Topic Name"
         android:textSize="20sp" />
 
@@ -32,7 +32,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20sp"
         app:layout_constraintTop_toBottomOf="@id/quizTopic"
-        app:layout_constraintStart_toEndOf="@id/quizTopicID"
+        app:layout_constraintStart_toEndOf="@id/imageView"
         android:text="Topic Description" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20sp"
+        app:layout_constraintStart_toEndOf="@id/quizTopicID"
+        app:srcCompat="@mipmap/ic_launcher_round" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

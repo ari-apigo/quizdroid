@@ -6,6 +6,7 @@ import android.content.Intent.EXTRA_TEXT
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +20,7 @@ class RecyclerAdapter(private val quizzes: ArrayList<Topic>) :
         val quizTopicTV: TextView = v.findViewById(R.id.quizTopic)
         val quizDescTV: TextView = v.findViewById(R.id.quizDescription)
         val quizTopicID: TextView = v.findViewById(R.id.quizTopicID)
+        val quizIcon: ImageView = v.findViewById(R.id.imageView)
 
         // initialize View.OnClickListener
         init {
@@ -52,5 +54,6 @@ class RecyclerAdapter(private val quizzes: ArrayList<Topic>) :
         holder.quizTopicTV.text = quizzes[position].topicTitle
         holder.quizDescTV.text = quizzes[position].topicSDesc
         holder.quizTopicID.text = (position + 1).toString()
+        holder.quizIcon.setImageResource(quizzes[position].topicIcon)
     }
 }
