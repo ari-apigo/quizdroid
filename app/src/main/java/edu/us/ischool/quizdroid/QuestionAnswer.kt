@@ -12,21 +12,29 @@ class QuestionAnswer : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question_answer)
 
+        // connect to TopicRepository
+        val app = this.application as QuizApp
+        val topicRepo = app.getTopicRepo().quizTopics
+
+        // get topic data
+        val topicID = intent.getIntExtra("TOPIC_ID", 1)
+        val topicData = topicRepo.get(topicID)
+
         // ----- populate activity w/ intent -----
         // Get the Intent that started this activity and extract data
         val userAnswer = intent.getStringExtra("USER_ANSWER")
         val questionNum = intent.getIntExtra("QUESTION_NUM", 1)
         var numCorrect = intent.getIntExtra("NUM_CORRECT", 1)
 
-        // TODO get next vs. finished status
+        // determine whether quiz has next question or is finished
         val quizStatus: String
-        // HARDCODED: assumes all quizzes are 9 questions long
-        if (questionNum < 9) {
+        val quizSize = topicData.topicQuestions.size
+        if (questionNum < quizSize) {
             quizStatus = "Next"
         } else quizStatus = "Finish"
 
         // get reference to user answer textView and set its text
-        val tvUserAnswer = findViewById<TextView>(R.id.tvUserAnswer).apply {
+        findViewById<TextView>(R.id.tvUserAnswer).apply {
             text = userAnswer
         }
 
@@ -36,16 +44,25 @@ class QuestionAnswer : AppCompatActivity() {
         }
 
         // ----- this activity -----
+        // get question data
+        val currentQuestion = topicData.topicQuestions[questionNum - 1]
+        // get correct answer
+        lateinit var correctAnswer: String
+        when (currentQuestion.quizCorrect) {
+            1 -> correctAnswer = currentQuestion.quizA1
+            2 -> correctAnswer = currentQuestion.quizA2
+            3 -> correctAnswer = currentQuestion.quizA3
+            4 -> correctAnswer = currentQuestion.quizA4
+        }
         // compare user answer to correct answer
-        if (userAnswer.equals("Answer 1")) {
-            // HARDCODED: assumes all correct answers are "Answer 1"
+        if (userAnswer.equals(correctAnswer)) {
             numCorrect++
         }
 
         // get reference to score TextView and set its text
         val quizScoreTV = findViewById<TextView>(R.id.tvQuizScore).apply {
             // HARDCODED: assumes all quizzes are 9 questions long
-            text = "You have $numCorrect out of 9 correct."
+            text = "You have $numCorrect out of $quizSize correct."
         }
 
         // ----- next activity -----

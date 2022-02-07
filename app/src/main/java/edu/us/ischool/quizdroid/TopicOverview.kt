@@ -12,6 +12,7 @@ class TopicOverview : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_topic_overview)
 
+        // connect to TopicRepository
         val app = this.application as QuizApp
         val topicRepo = app.getTopicRepo().quizTopics
 
@@ -20,9 +21,10 @@ class TopicOverview : AppCompatActivity() {
         val topic = intent.getStringExtra(EXTRA_TEXT)
 
         // get topic data
-        val topicData = topicRepo.get(intent.getIntExtra("TOPIC_ID", 1))
+        val topicID = intent.getIntExtra("TOPIC_ID", 1)
+        val topicData = topicRepo.get(topicID)
 
-        // Capture the layout's TextView and set the string as its text
+        // Capture the layout's TextViews and set their text
         val quizTopicTV = findViewById<TextView>(R.id.tvTopic).apply {
             text = topic
         }
@@ -38,9 +40,9 @@ class TopicOverview : AppCompatActivity() {
         val btnBegin = findViewById<Button>(R.id.btnBeginQuiz)
         // start quiz question activity on click
         btnBegin.setOnClickListener{
-            //val quizTopic = quizTopicTV.text.toString()
             val intent = Intent(this, QuizQuestion::class.java).apply {
                 putExtra("QUESTION_NUM", 1)
+                putExtra("TOPIC_ID", topicID)
             }
             startActivity(intent)
             finish()

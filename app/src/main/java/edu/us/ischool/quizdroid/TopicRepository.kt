@@ -5,7 +5,7 @@ package edu.us.ischool.quizdroid
 //}
 
 open class TopicRepository {
-    private val questions: Collection<Quiz> = arrayListOf(Quiz("New Question 1", "Answer 1", "Answer 2", "Answer 3", "Answer 4", 1),
+    private val questions: ArrayList<Quiz> = arrayListOf(Quiz("New Question 1", "Answer 1", "Answer 2", "Answer 3", "Answer 4", 1),
         Quiz("Question 2", "Answer 1", "Answer 2", "Answer 3", "Answer 4", 1),
         Quiz("Question 3", "Answer 1", "Answer 2", "Answer 3", "Answer 4", 1))
 
@@ -25,7 +25,7 @@ open class TopicRepository {
 //    }
 }
 
-class Topic(title: String, shortDesc: String, longDesc: String, questions: Collection<Quiz>) {
+class Topic(title: String, shortDesc: String, longDesc: String, questions: ArrayList<Quiz>) {
     val topicTitle = title
     val topicSDesc = shortDesc
     val topicLDesc = longDesc

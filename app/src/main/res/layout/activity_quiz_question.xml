@@ -38,25 +38,25 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/rbAnswer1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Answer 1" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/rbAnswer2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Answer 2" />
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/rbAnswer3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Answer 3" />
 
         <RadioButton
-            android:id="@+id/radioButton4"
+            android:id="@+id/rbAnswer4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Answer 4" />
