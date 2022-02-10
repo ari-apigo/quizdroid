@@ -10,6 +10,7 @@
         android:id="@+id/tvQuestionTracker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
         android:text="Question #"
         app:layout_constraintBottom_toTopOf="@+id/tvQuestion"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,7 +22,6 @@
         android:id="@+id/tvQuestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20sp"
         android:text="Question"
         app:layout_constraintBottom_toTopOf="@+id/radioGroupAnswers"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,12 +30,13 @@
 
     <RadioGroup
         android:id="@+id/radioGroupAnswers"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20sp"
+        android:layout_marginStart="10sp"
+        app:layout_constraintTop_toBottomOf="@id/tvQuestion"
         app:layout_constraintBottom_toTopOf="@+id/btnSubmit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent" >
 
         <RadioButton
             android:id="@+id/rbAnswer1"
@@ -67,10 +68,10 @@
         android:id="@+id/btnSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="200sp"
         android:enabled="false"
+        android:layout_marginTop="20sp"
         android:text="Submit"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radioGroupAnswers"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
