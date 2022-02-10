@@ -54,6 +54,11 @@ class QuestionAnswer : AppCompatActivity() {
             3 -> correctAnswer = currentQuestion.quizA3
             4 -> correctAnswer = currentQuestion.quizA4
         }
+        // display correct answer
+        findViewById<TextView>(R.id.tvCorrectAnswer).apply{
+            text = correctAnswer
+        }
+        
         // compare user answer to correct answer
         if (userAnswer.equals(correctAnswer)) {
             numCorrect++
