@@ -57,3 +57,7 @@ class RecyclerAdapter(private val quizzes: ArrayList<Topic>) :
         holder.quizIcon.setImageResource(quizzes[position].topicIcon)
     }
 }
+
+//adb push C:\Users\aribe\Downloads\questions.json C:\Users\aribe\.android\avd\Pixel_2_API_27.avd
+
+// adb push C:\Users\aribe\Downloads\questions.json C:\Users\aribe\.android\avd\Pixel_2_API_27_Google_APIs.avd\data
