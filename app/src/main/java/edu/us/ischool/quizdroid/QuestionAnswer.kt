@@ -66,7 +66,6 @@ class QuestionAnswer : AppCompatActivity() {
 
         // get reference to score TextView and set its text
         val quizScoreTV = findViewById<TextView>(R.id.tvQuizScore).apply {
-            // HARDCODED: assumes all quizzes are 9 questions long
             text = "You have $numCorrect out of $quizSize correct."
         }
 
@@ -82,6 +81,7 @@ class QuestionAnswer : AppCompatActivity() {
                 val intent = Intent(this, QuizQuestion::class.java).apply {
                     putExtra("QUESTION_NUM", questionNum + 1)
                     putExtra("NUM_CORRECT", numCorrect)
+                    putExtra("TOPIC_ID", topicID)
                 }
                 startActivity(intent)
                 finish()
