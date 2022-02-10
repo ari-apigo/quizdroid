@@ -58,7 +58,7 @@ class QuestionAnswer : AppCompatActivity() {
         findViewById<TextView>(R.id.tvCorrectAnswer).apply{
             text = correctAnswer
         }
-        
+
         // compare user answer to correct answer
         if (userAnswer.equals(correctAnswer)) {
             numCorrect++

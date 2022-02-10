@@ -1,8 +1,11 @@
 package edu.us.ischool.quizdroid
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Adapter
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -24,10 +27,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        setSupportActionBar(findViewById(R.id.toolbar))
+
         linearLayoutManager = LinearLayoutManager(this)
 
         val app = this.application as QuizApp
-
         val topicRepo = app.getTopicRepo()
 
         val quizTopics = topicRepo.quizTopics
@@ -40,6 +44,26 @@ class MainActivity : AppCompatActivity() {
         rv.layoutManager = linearLayoutManager
         adapter = RecyclerAdapter(quizTopics)
         rv.adapter = adapter
+    }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.action_preferences -> {
+            // User chose the "Preferences" item, show the preferences UI
+            val intent = Intent(this, Preferences::class.java)
+            this.startActivity(intent)
+            true
+        }
+
+        else -> {
+            // If we got here, the user's action was not recognized.
+            // Invoke the superclass to handle it.
+            super.onOptionsItemSelected(item)
+        }
     }
 }

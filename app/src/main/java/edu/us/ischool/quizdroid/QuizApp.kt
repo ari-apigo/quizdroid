@@ -2,6 +2,7 @@ package edu.us.ischool.quizdroid
 
 import android.app.Application
 import android.util.Log
+import android.view.MenuItem
 import java.io.File
 
 class QuizApp : Application() {
@@ -16,4 +17,5 @@ class QuizApp : Application() {
 
         Log.i("ActivityManager","QuizDroid is loading.")
     }
+
 }

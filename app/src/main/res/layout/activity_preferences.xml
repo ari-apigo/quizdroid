@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Preferences">
+
+    <TextView
+        android:id="@+id/tvPreferences"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Preferences"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvURL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Data URL:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@id/tvPreferences"
+        app:layout_constraintTop_toBottomOf="@id/tvPreferences"
+        app:layout_constraintBaseline_toBaselineOf="@id/editTextURL"/>
+
+    <EditText
+        android:id="@+id/editTextURL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textUri"
+        app:layout_constraintStart_toEndOf="@id/tvURL"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPreferences"/>
+
+    <TextView
+        android:id="@+id/tvCheckDL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Check for new downloads every:"
+        android:layout_marginTop="5sp"
+        app:layout_constraintTop_toBottomOf="@id/editTextURL"
+        app:layout_constraintStart_toStartOf="@id/tvURL"
+        app:layout_constraintBaseline_toBaselineOf="@id/editTextMinutes"/>
+
+    <EditText
+        android:id="@+id/editTextMinutes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="5"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@id/tvCheckDL"
+        app:layout_constraintEnd_toStartOf="@id/tvMinutes"
+        app:layout_constraintTop_toBottomOf="@id/editTextURL"/>
+
+    <TextView
+        android:id="@+id/tvMinutes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="minutes"
+        app:layout_constraintStart_toEndOf="@id/editTextMinutes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@id/editTextMinutes"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

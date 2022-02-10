@@ -3,11 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/aribe/Documents/School/INFO448/quizdroid/app/src/main/res/drawable-anydpi/ic_action_preferences.xml" value="0.403125" />
         <entry key="..\:/Users/aribe/Documents/School/INFO448/quizdroid/app/src/main/res/layout/activity_main.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/aribe/Documents/School/INFO448/quizdroid/app/src/main/res/layout/activity_preferences.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/aribe/Documents/School/INFO448/quizdroid/app/src/main/res/layout/activity_question_answer.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/aribe/Documents/School/INFO448/quizdroid/app/src/main/res/layout/activity_quiz_question.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/aribe/Documents/School/INFO448/quizdroid/app/src/main/res/layout/activity_topic_overview.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/aribe/Documents/School/INFO448/quizdroid/app/src/main/res/layout/quiz_list_item.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/aribe/Documents/School/INFO448/quizdroid/app/src/main/res/menu/menu.xml" value="0.38697916666666665" />
       </map>
     </option>
   </component>
