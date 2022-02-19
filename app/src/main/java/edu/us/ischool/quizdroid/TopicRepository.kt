@@ -35,6 +35,15 @@ open class TopicRepository(file: File) {
         }
     }
 
+//    fun readJsonStream(file: File): ArrayList<Topic> {
+//        val reader = JsonReader(FileReader(file))
+//        return try {
+//            readTopicsArray(reader)
+//        } finally {
+//            reader.close()
+//        }
+//    }
+
     fun readTopicsArray(reader: JsonReader): ArrayList<Topic> {
         val topics = ArrayList<Topic>()
 
