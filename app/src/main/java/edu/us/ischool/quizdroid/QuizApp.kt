@@ -16,6 +16,9 @@ class QuizApp : Application() {
     // part 3 extra credit custom JSON at:
     //  https://gist.github.com/ari-apigo/49d8504e856bff71b60e06a0e3972d7b
 
+    // part 4 type in this on the Preferences activity to see data change by download
+    //  http://tednewardsandbox.site44.com/questions.json
+
     fun getTopicRepo(): TopicRepository {
         // part 3: local file source
         //val file = File(filesDir, "questions.json")

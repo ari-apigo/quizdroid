@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.EditText
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -21,6 +22,7 @@ import java.io.PrintWriter
 import java.net.HttpURLConnection
 import java.net.URL
 import java.util.jar.Manifest
+import kotlin.concurrent.fixedRateTimer
 import kotlin.concurrent.thread
 
 class QuizTest(topic: String) {
@@ -47,6 +49,21 @@ class MainActivity : AppCompatActivity() {
 
         // part 4 stuff
         checkPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE, 100)
+
+        // start a timer to download every N minutes as defined in Preferences
+        if (intent.hasExtra("TIMER_INTERVAL")) {
+            val timePref = intent.getIntExtra("TIMER_INTERVAL", 1)
+            if (timePref > 0) {
+                val interval = (timePref * 60000).toLong()
+                var timer = fixedRateTimer("timer", false, 0, interval){
+                    this@MainActivity.runOnUiThread{
+                        if (intent.hasExtra("URL")) {
+                            Toast.makeText(this@MainActivity, intent.getStringExtra("URL"), Toast.LENGTH_LONG).show()
+                        }
+                    }
+                }
+            }
+        }
 
         val app = this.application as QuizApp
 
@@ -94,7 +111,11 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this@MainActivity, "Permission already granted", Toast.LENGTH_SHORT).show()
 
             val t = thread {
-                val server = URL("https://gist.githubusercontent.com/ari-apigo/49d8504e856bff71b60e06a0e3972d7b/raw/5495145cdbb914d1579b1dadbb59ff99ea247a69/customjson_aapigo.json")
+                //val server = URL("https://gist.githubusercontent.com/ari-apigo/49d8504e856bff71b60e06a0e3972d7b/raw/5495145cdbb914d1579b1dadbb59ff99ea247a69/customjson_aapigo.json")
+                val server = if (intent.hasExtra("URL")) {
+                    URL(intent.getStringExtra("URL"))
+                } else URL("https://gist.githubusercontent.com/ari-apigo/49d8504e856bff71b60e06a0e3972d7b/raw/5495145cdbb914d1579b1dadbb59ff99ea247a69/customjson_aapigo.json")
+
                 val client: HttpURLConnection = server.openConnection() as HttpURLConnection
                 client.requestMethod = "GET"
 
@@ -121,11 +142,6 @@ class MainActivity : AppCompatActivity() {
                 }
                 // rename newly downloaded data file as "questions.json"
                 newFile.renameTo(questionsData)
-
-                //            var inputLine: String?
-                //            while (result.readLine().also { inputLine = it } != null)
-                //                Log.i("QuizApp", inputLine!!)
-                //            result.close()
             }
             t.join()
         }

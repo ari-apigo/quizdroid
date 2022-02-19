@@ -31,8 +31,10 @@
         android:id="@+id/editTextURL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:ems="25"
         android:inputType="textUri"
+        android:textSize="10sp"
+        android:text="https://gist.githubusercontent.com/ari-apigo/49d8504e856bff71b60e06a0e3972d7b/raw/5495145cdbb914d1579b1dadbb59ff99ea247a69/customjson_aapigo.json"
         app:layout_constraintStart_toEndOf="@id/tvURL"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvPreferences"/>
