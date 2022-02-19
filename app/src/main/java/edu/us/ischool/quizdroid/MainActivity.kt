@@ -1,16 +1,21 @@
 package edu.us.ischool.quizdroid
 
+import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
+import android.provider.Settings
 import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -47,7 +52,40 @@ class MainActivity : AppCompatActivity() {
 
         linearLayoutManager = LinearLayoutManager(this)
 
-        // part 4 stuff
+        // part 4 checking internet
+        val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork = cm.activeNetwork
+        if (activeNetwork == null) {
+            val dialogBuilder = AlertDialog.Builder(this)
+            dialogBuilder.setMessage("You have no Internet access.")
+                .setCancelable(false)
+                .setPositiveButton("OK", DialogInterface.OnClickListener {
+                        dialog, id -> finish()
+                })
+            val alert = dialogBuilder.create()
+            alert.setTitle("No Internet Connection")
+            alert.show()
+        }
+
+        // part 4 check airplane mode
+        if (Settings.System.getInt(contentResolver, Settings.Global.AIRPLANE_MODE_ON, 0) != 0) {
+            val dialogBuilder = AlertDialog.Builder(this)
+            dialogBuilder.setMessage("Do you want to turn airplane mode off?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, id ->
+                    val intentAirplaneMode = Intent(Settings.ACTION_AIRPLANE_MODE_SETTINGS)
+                    intentAirplaneMode.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intentAirplaneMode);
+                })
+                .setNegativeButton("No", DialogInterface.OnClickListener {
+                    dialog, id -> dialog.cancel()
+                })
+            val alert = dialogBuilder.create()
+            alert.setTitle("Airplane Mode is On")
+            alert.show()
+        }
+
+        // part 4 downloading data file
         checkPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE, 100)
 
         // start a timer to download every N minutes as defined in Preferences
